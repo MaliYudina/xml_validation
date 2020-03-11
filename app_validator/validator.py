@@ -3,10 +3,10 @@ from lxml import etree
 import logging
 
 
-INIT_XML_FILE = 'init_xml.xml'  # оригинальный файл XML
-XSD_FILE = 'xsd_file.xsd'  # представление схемы
-XSD_TRANS_FILE = 'trans_xsd.xsd'  # представление схемы
-XSLT_FILE = 'xslt_file.xslt'  # таблица стилей
+INIT_XML_FILE = 'init_xml.xml'
+XSD_FILE = 'xsd_file.xsd'
+XSD_TRANS_FILE = 'trans_xsd.xsd'
+XSLT_FILE = 'xslt_file.xslt'
 FINAL_XML = 'final_xml.xml'
 
 
@@ -42,7 +42,7 @@ def apply_template(xml_stream, xslt_stream):
     LOG.info("-----> Transforming the validated initial XML file using XSLT")
     xslt = etree.fromstring(xslt_stream)
     transform_obj = etree.XSLT(xslt)
-    xml = etree.fromstring(xml_stream)  #
+    xml = etree.fromstring(xml_stream)
     tr_xml = transform_obj(xml)
     LOG.info("Transformation is done")
     return etree.tostring(tr_xml, pretty_print=True, encoding='utf8')
